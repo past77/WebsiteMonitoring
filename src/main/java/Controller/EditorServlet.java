@@ -1,8 +1,8 @@
 package Controller;
 
 import Model.*;
-import connectionToDB.IStorageMonitoring;
-import connectionToDB.StorageMonitoring;
+import Model.connectionToDB.IStorageMonitoring;
+import Model.connectionToDB.StorageMonitoring;
 import lombok.SneakyThrows;
 
 import javax.servlet.RequestDispatcher;
@@ -22,12 +22,12 @@ public class EditorServlet extends HttpServlet {
         String url = req.getParameter("url");
         Url monitoredURL = storageMonitoring.getURL(url);
 
-        int maxTime = Integer.valueOf(req.getParameter("maxResponseTime"));
-        int minTime = Integer.valueOf(req.getParameter("minResponseTime"));
-        int monitoringTimeSeconds = Integer.valueOf(req.getParameter("monitoringTimeSeconds"));
-        int responseCode = Integer.valueOf(req.getParameter("responseCode"));
-        int minSize = Integer.valueOf(req.getParameter("minSize"));
-        int maxSize = Integer.valueOf(req.getParameter("maxSize"));
+        int maxTime = Integer.parseInt(req.getParameter("maxResponseTime"));
+        int minTime = Integer.parseInt(req.getParameter("minResponseTime"));
+        int monitoringTimeSeconds = Integer.parseInt(req.getParameter("monitoringTimeSeconds"));
+        int responseCode = Integer.parseInt(req.getParameter("responseCode"));
+        int minSize = Integer.parseInt(req.getParameter("minSize"));
+        int maxSize = Integer.parseInt(req.getParameter("maxSize"));
 
         req.setAttribute("monitoredURL", monitoredURL);
         req.setAttribute("url", url);

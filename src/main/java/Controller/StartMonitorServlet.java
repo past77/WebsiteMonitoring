@@ -1,8 +1,8 @@
 package Controller;
 
 import Model.*;
-import connectionToDB.IStorageMonitoring;
-import connectionToDB.StorageMonitoring;
+import Model.connectionToDB.IStorageMonitoring;
+import Model.connectionToDB.StorageMonitoring;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -102,9 +102,9 @@ public class StartMonitorServlet extends HttpServlet {
             Url url = storageMonitoring.getURL(data.getUrl());
             long currentTime = data.getResponseTime();
             long maxTime = url.getMaxResponseTime();
-            long middle = maxTime / 3;
+            long fast = maxTime / 3;
 
-            if (currentTime <= middle) {
+            if (currentTime <= fast) {
                 return Status.OK;
             } else if (currentTime >= maxTime) {
                 return Status.CRITICAL;

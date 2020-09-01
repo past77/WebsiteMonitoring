@@ -11,13 +11,13 @@
          pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>Initial Data</title>
+    <title>Data</title>
 </head>
 <body>
 <%
     List<Url> monitoredURLS = (List<Url>) request.getAttribute("monitoredURLS");
 %>
-<h2>Set your monitoringDataStorage</h2>
+
 <table border="1">
     <thead>
     <tr>

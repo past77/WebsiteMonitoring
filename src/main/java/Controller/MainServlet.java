@@ -1,8 +1,8 @@
 package Controller;
 
 import Model.Url;
-import connectionToDB.IStorageMonitoring;
-import connectionToDB.StorageMonitoring;
+import Model.connectionToDB.IStorageMonitoring;
+import Model.connectionToDB.StorageMonitoring;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -2,8 +2,8 @@ package Controller;
 
 
 import Model.*;
-import connectionToDB.IStorageMonitoring;
-import connectionToDB.StorageMonitoring;
+import Model.connectionToDB.IStorageMonitoring;
+import Model.connectionToDB.StorageMonitoring;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,25 +26,20 @@ public class AddNewLinkServlet extends HttpServlet {
         String url = req.getParameter("url");
 
         if (!isExistedUrl(url)) {
-            int maxTime = Integer.valueOf(req.getParameter("maxResponseTime"));
-            int minTime = Integer.valueOf(req.getParameter("minResponseTime"));
-            int monitoringTimeSeconds = Integer.valueOf(req.getParameter("monitoringTimeSeconds"));
-            int responseCode = Integer.valueOf(req.getParameter("responseCode"));
-            int minSize = Integer.valueOf(req.getParameter("minSize"));
-            int maxSize = Integer.valueOf(req.getParameter("maxSize"));
+            int maxTime = Integer.parseInt(req.getParameter("maxResponseTime"));
+            int minTime = Integer.parseInt(req.getParameter("minResponseTime"));
+            int monitoringTimeSeconds = Integer.parseInt(req.getParameter("monitoringTimeSeconds"));
+            int responseCode = Integer.parseInt(req.getParameter("responseCode"));
+            int minSize = Integer.parseInt(req.getParameter("minSize"));
+            int maxSize = Integer.parseInt(req.getParameter("maxSize"));
 
             addURL(new Url(url, minTime, maxTime, monitoringTimeSeconds, responseCode, minSize, maxSize));
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("mainUrlsTable");
             requestDispatcher.forward(req, resp);
         } else {
-            resp.getWriter().write(
-                    "<html>" +
-                            "<head></head>" +
-                            "<body>" +
-                            "<script>alert('Url is already exists')</script>" +
-                            "</body>" +
-                            "</html>");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("duplicateLink");
+            requestDispatcher.forward(req, resp);;
         }
     }
 

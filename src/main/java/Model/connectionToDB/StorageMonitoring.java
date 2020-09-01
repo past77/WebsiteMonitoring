@@ -1,4 +1,4 @@
-package connectionToDB;
+package Model.connectionToDB;
 
 import Model.Url;
 
