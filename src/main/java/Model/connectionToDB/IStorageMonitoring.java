@@ -26,4 +26,8 @@ public interface IStorageMonitoring {
     public abstract void updateMinSize(String targetUrl, int updateMinSize) throws SQLException;
 
     public abstract void updateMaxSize(String targetUrl, int updateMaxSize) throws SQLException;
+
+    public boolean isConnected() throws SQLException;
+
+    public abstract int getCount() throws  SQLException;
 }

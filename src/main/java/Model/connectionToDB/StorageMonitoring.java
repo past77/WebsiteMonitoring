@@ -196,4 +196,23 @@ public class StorageMonitoring implements IStorageMonitoring {
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
+
+
+    public boolean isConnected() throws SQLException {
+        if (!connection.isClosed()){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int getCount() throws SQLException {
+        int count;
+
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM urls_info");
+
+        count = resultSet.getInt(1);
+        return count;
+    }
 }

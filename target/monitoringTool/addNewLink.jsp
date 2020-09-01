@@ -9,7 +9,7 @@
          pageEncoding="UTF-8" %>
 <html>
 <head>
-    <title>New URL</title>
+    <title>New link</title>
 </head>
 <body>
 <form action="addNewLink" method="post">
